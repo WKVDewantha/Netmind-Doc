@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetMind - AI-Powered Network Intelligence Platform</title>
+    <link rel="icon" type="image/x-icon" href="./docs_assets/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="./docs_assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#1e1a17',
+                        darker: '#161311',
+                        panel: '#27211e',
+                        accent: '#ff7244',
+                        accentHover: '#e6653c',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['Fira Code', ' monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'dark',
+            fontFamily: 'Inter, system-ui, sans-serif',
+            flowchart: {
+                htmlLabels: false
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #161311; /* darker */
+            color: #e5e5e5;
+        }
+        .glass-panel {
+            background: rgba(39, 33, 30, 0.7); /* panel */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ff7244, #fca5a5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+    </style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="antialiased selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-3 ml-2">
+            <img src="./docs_assets/netmind.png" alt="NetMind Logo" class="h-12 w-12 object-contain scale-110">
+            <span class="text-2xl font-bold text-white">Net<span class="text-accent">Mind</span></span>
+        </div>
+        <div class="hidden md:flex gap-6 text-sm font-medium text-gray-400">
+            <a href="#overview" class="hover:text-accent transition-colors">Overview</a>
+            <a href="#features" class="hover:text-accent transition-colors">Features</a>
+            <a href="#architecture" class="hover:text-accent transition-colors">Architecture</a>
+            <a href="#roadmap" class="hover:text-accent transition-colors">Roadmap</a>
+        </div>
+        <div class="flex gap-4 items-center">
+            <a href="./NetMind_Dev_Documentation.html" class="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">Dev Docs</a>
+            <a href="mailto:viduradewantha@gmail.com" class="bg-accent/10 border border-accent text-accent px-4 py-2 rounded text-sm font-semibold hover:bg-accent hover:text-white transition-all">Request Access</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col items-center justify-center text-center relative overflow-hidden min-h-screen" data-aos="fade-down">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+        <span class="px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-semibold mb-6 uppercase tracking-widest">Enterprise Network Platform</span>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Intelligent Network <br><span class="gradient-text">Design & Automation.</span></h1>
+        <p class="text-xl text-gray-400 text-center max-w-3xl mb-8 leading-relaxed">
+            NetMind is an advanced, AI-powered platform for creating, managing, and automating network diagrams. Go beyond drawing — automatically generate full device configurations directly from your topology.
+        </p>
+
+        <!-- Access Button -->
+        <div class="flex flex-col items-center gap-2 mb-10">
+            <div class="flex items-center gap-4">
+                <button class="group relative inline-flex items-center gap-3 bg-accent text-white px-8 py-4 rounded-xl text-base font-semibold overflow-hidden transition-all hover:bg-accentHover shadow-lg shadow-accent/20 opacity-50 cursor-not-allowed">
+                    <span>Get Started</span>
+                </button>
+                <span class="text-xs font-bold text-accent bg-accent/10 border border-accent/20 px-2 py-1 rounded">Coming Soon</span>
+            </div>
+            <span class="text-xs text-gray-500 mt-2">Cloud Hosted • Private Instances Available</span>
+        </div>
+    </header>
+
+    <!-- Why It's Special Section -->
+    <section id="overview" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="mb-16 text-center">
+            <h2 class="text-3xl font-bold mb-4">Why NetMind is Special</h2>
+            <div class="h-1 w-20 bg-accent mx-auto rounded"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h3 class="text-2xl font-semibold mb-4 text-white">The Engineering Dilemma</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    Network engineers traditionally maintain static diagrams in tools like Visio, and separately write CLI configurations by hand. This gap leads to human error, outdated documentation, and slow provisioning times.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 border border-accent/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7244" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium text-white">AI Configuration Generation</h4>
+                            <p class="text-sm text-gray-400 mt-1">Our AI engines analyze your visual topology, subnets, and labels to instantly compile accurate, vendor-specific CLI syntax (Cisco IOS) ready for deployment.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 border border-accent/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff7244" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium text-white">Intelligent Canvas</h4>
+                            <p class="text-sm text-gray-400 mt-1">A highly responsive, grid-based infinite canvas with snapping, custom device categories, and dynamic edge routing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-panel p-6 rounded-xl border border-gray-800" data-aos="fade-left">
+                <h4 class="text-center font-medium mb-6 text-gray-300">Time to Deploy (Minutes)</h4>
+                <div class="relative w-full h-[250px]">
+                    <canvas id="timeSavedChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="py-20 bg-panel border-y border-gray-900">
+        <div class="px-6 md:px-12 max-w-7xl mx-auto">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl font-bold mb-4">Technical Architecture</h2>
+                <div class="h-1 w-20 bg-accent mx-auto rounded"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">NetMind is a proprietary, closed-source SaaS web application utilizing modern cloud infrastructure.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center bg-darker p-8 rounded-2xl border border-gray-800" data-aos="zoom-in">
+                <div class="w-full md:w-3/5">
+                    <div class="mermaid">
+                        graph TD
+                        classDef frontend fill:#1e1e1e,stroke:#ff7244,stroke-width:2px,color:#fff
+                        classDef backend fill:#1e1e1e,stroke:#3b82f6,stroke-width:2px,color:#fff
+                        classDef cloud fill:#1e1e1e,stroke:#8b5cf6,stroke-width:2px,color:#fff
+                        
+                        A["React/Next.js Web UI \nCanvas Engine"]:::frontend
+                        B["Genkit / Gemini AI \nLogic Engine"]:::backend
+                        C["Firebase Auth & \nFirestore DB"]:::cloud
+                        D["Cloud Hosting \n(Cloudflare/Azure)"]:::cloud
+
+                        A <-->|Realtime Sync| C
+                        A -->|Request Config| B
+                        B -->|Generated CLI| A
+                        D -->|Serves App| A
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 space-y-4">
+                    <h3 class="text-xl font-bold text-white mb-4">The Stack</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-accent mr-2">✓</span>
+                            <div><strong class="text-white block">Frontend Web Client:</strong> Next.js App Router, Tailwind CSS, and a heavily optimized custom SVG/React canvas engine.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">✓</span>
+                            <div><strong class="text-white block">AI Intelligence:</strong> Firebase Genkit wrapping Google AI (Gemini 1.5 Flash) for extreme accuracy in configuration synthesis.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-400 mr-2">✓</span>
+                            <div><strong class="text-white block">Cloud Infrastructure:</strong> Firebase for real-time document synchronization and storage, with scalable edge hosting planned for Azure/Cloudflare.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section id="features" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="mb-16 text-center">
+            <h2 class="text-3xl font-bold mb-4">Comprehensive Feature Set</h2>
+            <div class="h-1 w-20 bg-accent mx-auto rounded"></div>
+        </div>
+
+        <div class="space-y-24">
+            <!-- Feature 1: Intelligent Canvas -->
+            <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-white mb-3">Intelligent Network Canvas</h3>
+                    <p class="text-gray-400 mb-4">Our high-performance drawing engine allows engineers to plot complex enterprise networks with ease. Access an exhaustive library of standardized device icons covering everything from core routers to security appliances.</p>
+                    <ul class="text-sm text-gray-500 space-y-1 list-disc list-inside">
+                        <li>Infinite grid-snapping workspace</li>
+                        <li>Intelligent orthogonal edge routing algorithms</li>
+                        <li>Multi-node selection and bulk modification</li>
+                        <li>Extensive searchable device category library</li>
+                        <li>JSON export/import and PDF/PNG export</li>
+                        <li>Text labels and device property customizations</li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2 glass-panel rounded-xl overflow-hidden p-2" data-aos="fade-right">
+                    <div class="h-[300px] w-full bg-cover bg-center rounded" style="background-image: url('./docs_assets/netmind_canvas_ui.png');"></div>
+                </div>
+            </div>
+
+            <!-- Feature 2: AI Configuration Generation -->
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+                <div class="w-full md:w-1/2" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-white mb-3">AI Configuration Generation</h3>
+                    <p class="text-gray-400 mb-4">Transform your visual diagrams directly into deployable code. NetMind's Genkit integration reads your layout, analyzes textual annotations (IPs, VLANs), and builds full device configs in seconds.</p>
+                    <ul class="text-sm text-gray-500 space-y-1 list-disc list-inside">
+                        <li>Currently supports comprehensive Cisco IOS generation</li>
+                        <li>Intelligently understands text label associations</li>
+                        <li>Assigns IP ranges logically and applies routing protocols</li>
+                        <li>Outputs clean, copyable format directly in the editor</li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2 glass-panel rounded-xl overflow-hidden p-2" data-aos="fade-left">
+                    <div class="h-[300px] w-full bg-cover bg-center rounded" style="background-image: url('./docs_assets/netmind_ai_config_ui.png');"></div>
+                </div>
+            </div>
+
+            <!-- Feature 3: Subnet Calculator -->
+            <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-white mb-3">Advanced Subnet Calculator</h3>
+                    <p class="text-gray-400 mb-4">Plan your IP addressing schemes before you draw. The built-in subnet tool provides real-time binary breakdowns, CIDR adjustments, and comprehensive subnet tables.</p>
+                    <ul class="text-sm text-gray-500 space-y-1 list-disc list-inside">
+                        <li>Interactive mask bit adjustments</li>
+                        <li>Visual binary octet analysis</li>
+                        <li>Instant host and broadcast calculation</li>
+                        <li>Seamless integration into your project workflow</li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2 glass-panel rounded-xl overflow-hidden p-2" data-aos="fade-right">
+                    <div class="h-[300px] w-full bg-cover bg-center rounded" style="background-image: url('./docs_assets/netmind_subnet_ui.png');"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap & New Features Section -->
+    <section id="roadmap" class="py-20 bg-accent/5 border-t border-accent/10 relative overflow-hidden">
+        <div class="px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-accent font-mono text-sm tracking-wider">UPCOMING MILESTONES</span>
+                    <h2 class="text-3xl font-bold mt-1">Product Roadmap</h2>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Desktop Application -->
+                <div class="glass-panel border-accent/30 border p-8 rounded-xl relative overflow-hidden group" data-aos="fade-right">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-[40px] group-hover:bg-accent/20 transition-all duration-500"></div>
+                    <div class="bg-accent text-darker text-xs font-bold px-2 py-1 rounded inline-block mb-4">IN DEVELOPMENT</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">NetMind Desktop Application</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        To support offline modes, direct device console connections, and local saves, we are building a native desktop client utilizing modern web-wrappers.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-sm text-gray-300 font-mono">
+                        <li>> Direct SSH/Console push of configurations</li>
+                        <li>> Offline canvas editing mode</li>
+                        <li>> Local file system `.netmind` saves</li>
+                    </ul>
+                </div>
+
+                <!-- Multi-Vendor & Auto-Diagram -->
+                <div class="glass-panel p-8 rounded-xl relative overflow-hidden" data-aos="fade-left">
+                    <div class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">FUTURE PLANNING</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Multi-Vendor & Auto-Generation</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        We are actively expanding our AI models and parsers to support cross-vendor infrastructure and automated documentation.
+                    </p>
+                    
+                    <div class="bg-darker p-4 rounded-lg border border-gray-800">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-2 h-2 rounded-full bg-accent"></div>
+                            <span class="text-sm text-gray-300">Support for Fortigate, Aruba, and Juniper syntaxes.</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-2 h-2 rounded-full bg-accent"></div>
+                            <span class="text-sm text-gray-300"><strong>Automatic Diagram Generation:</strong> Provide a routing table or config file, and let NetMind draw the topology.</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-2 h-2 rounded-full bg-accent"></div>
+                            <span class="text-sm text-gray-300"><strong>Advanced AI Models:</strong> Integration with more powerful AI models for complex enterprise synthesis.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-gray-900 bg-black text-center text-sm text-gray-500 flex flex-col items-center gap-4">
+        <div>
+            <p>© 2026 NetMind Platform. Closed Source Proprietary Software.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 items-center">
+            <a href="NetMind_Dev_Documentation.html" class="hover:text-white transition-colors">Developer Docs</a>
+            <a href="NetMind_About.html" class="hover:text-white transition-colors">About</a>
+        </div>
+    </footer>
+
+    <!-- Initialize Chart -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('timeSavedChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Manual Configs', 'Text Templates', 'NetMind AI'],
+                    datasets: [{
+                        label: 'Time to Provision (Minutes)',
+                        data: [120, 45, 5],
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.4)', // red
+                            'rgba(245, 158, 11, 0.4)', // yellow
+                            'rgba(255, 114, 68, 0.8)'   // orange (accent)
+                        ],
+                        borderColor: [
+                            'rgba(239, 68, 68, 1)',
+                            'rgba(245, 158, 11, 1)',
+                            'rgba(255, 114, 68, 1)'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#9ca3af'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#9ca3af'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+            });
+        });
+    </script>
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-accent/20 border border-accent/30 text-accent backdrop-blur-md shadow-lg shadow-accent/10 opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-accent/30 cursor-pointer" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+    <script>
+        (function(){
+            var btn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', function(){
+                if(window.scrollY > 400){
+                    btn.style.opacity='1'; btn.style.transform='translateY(0)'; btn.style.pointerEvents='auto';
+                } else {
+                    btn.style.opacity='0'; btn.style.transform='translateY(1rem)'; btn.style.pointerEvents='none';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
